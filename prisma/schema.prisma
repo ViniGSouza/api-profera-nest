@@ -1,0 +1,35 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String  @id @default(uuid()) @db.VarChar(36)
+  email    String  @unique
+  name     String
+  password String
+  isAdmin  Boolean @default(false)
+}
+
+model Course {
+  id          String  @id @default(uuid()) @db.VarChar(36)
+  name        String
+  description String
+  urlImg      String
+  aulas       Class[]
+}
+
+model Class {
+  id               String   @id @default(uuid()) @db.VarChar(36)
+  name             String
+  description      String
+  videoUrls        String
+  dataDeLancamento DateTime
+  cursoId          String   @db.VarChar(36)
+  curso            Course   @relation(fields: [cursoId], references: [id])
+}
