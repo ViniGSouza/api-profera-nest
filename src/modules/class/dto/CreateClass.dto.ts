@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsArray, IsDateString, IsJSON, IsNotEmpty, ValidateNested } from "class-validator";
-import { VideoItem } from "./VideoItem.dto";
+import { IsArray, IsDateString, IsNotEmpty, ValidateNested } from "class-validator";
+import { VideoItemDTO } from "./VideoItem.dto";
 import { Type } from "class-transformer";
 
 export class CreateClassDTO {
@@ -13,14 +13,14 @@ export class CreateClassDTO {
   description: string;
 
   @ApiProperty({
-    type: [VideoItem],
+    type: [VideoItemDTO],
     description: 'Lista de vídeos, cada um com título e URL.',
     example: [{ title: 'Introdução ao Curso', url: 'https://www.youtube.com/watch?v=3' }]
   })
   @IsArray({ message: 'videoUrls deve ser um array' })
   @ValidateNested({ each: true })
-  @Type(() => VideoItem)
-  videos: VideoItem[];
+  @Type(() => VideoItemDTO)
+  videos: VideoItemDTO[];
   
   @ApiProperty({ example: '2024-01-01',  description: 'Data de lançamento do curso' })
   @IsDateString({}, { message: 'A data de lançamento deve estar em formato de data válida' })

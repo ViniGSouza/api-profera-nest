@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty } from "class-validator";
 
-export class VideoItem {
+export class VideoItemDTO {
   @ApiProperty({ example: 'Introdução ao Curso', description: 'Título do vídeo' })
   @IsNotEmpty()
   title: string;
