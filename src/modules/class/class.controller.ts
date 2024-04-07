@@ -46,6 +46,7 @@ export class ClassController {
     try {
       return await this.classService.update(id, dataUpdate);
     } catch (error) {
+      console.log(error)
       return 'Erro ao atualizar a aula.'
     }
   }

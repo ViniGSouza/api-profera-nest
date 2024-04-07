@@ -21,13 +21,12 @@ export class ClassService {
   }
 
   async create({ name, description, videos, dataDeLancamento, cursoId }: CreateClassDTO) {
-    const dataDeLancamentoDate = new Date(dataDeLancamento);
     const classItem = await this.prisma.class.create({
       data: {
         name,
         description,
         videos: `${JSON.stringify(videos)}`,
-        dataDeLancamento: dataDeLancamentoDate,
+        dataDeLancamento,
         cursoId
       }
     });
@@ -45,8 +44,6 @@ export class ClassService {
 
   async update(id: string, 
     { name, description, videos, dataDeLancamento, cursoId }: UpdateClassDTO) {
-    let dataDeLancamentoDate: Date;
-    dataDeLancamento ? dataDeLancamentoDate = new Date(dataDeLancamento) : dataDeLancamentoDate = null;
     const classItem = await this.prisma.class.update({
       where: {
         id
@@ -55,7 +52,7 @@ export class ClassService {
         name,
         description,
         videos: `${JSON.stringify(videos)}`,
-        dataDeLancamento: dataDeLancamentoDate,
+        dataDeLancamento,
         cursoId
       }
     });

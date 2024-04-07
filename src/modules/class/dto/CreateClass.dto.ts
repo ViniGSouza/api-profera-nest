@@ -24,7 +24,7 @@ export class CreateClassDTO {
   
   @ApiProperty({ example: '2024-01-01',  description: 'Data de lançamento do curso' })
   @IsDateString({}, { message: 'A data de lançamento deve estar em formato de data válida' })
-  dataDeLancamento: Date;
+  dataDeLancamento: string;
 
   @ApiProperty({ example: '1',  description: 'ID do curso para o qual a aula será criado' })
   @IsNotEmpty({ message: 'O ID do curso não pode ser vazio' })
