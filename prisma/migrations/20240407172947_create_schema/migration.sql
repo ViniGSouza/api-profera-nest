@@ -26,6 +26,8 @@ CREATE TABLE "Class" (
     "description" TEXT NOT NULL,
     "videos" TEXT NOT NULL,
     "dataDeLancamento" TEXT NOT NULL,
+    "duration" INTEGER NOT NULL,
+    "archives" TEXT,
     "cursoId" VARCHAR(36) NOT NULL,
 
     CONSTRAINT "Class_pkey" PRIMARY KEY ("id")

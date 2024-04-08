@@ -7,5 +7,6 @@ import { HashPasswordPipe } from "src/resources/pipes/hash-password.pipe";
 @Module({
   controllers: [UserController],
   providers: [UserService, PrismaService, HashPasswordPipe],
+  exports: [UserService]
 })
 export class UserModule {}
